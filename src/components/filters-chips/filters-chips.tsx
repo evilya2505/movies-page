@@ -7,9 +7,12 @@ import ClearButton from "../clear-button/clear-button";
 import { AGE_RATINGS } from "../../utils/constants";
 
 import styles from "./filters-chips.module.css";
+import { useSelector } from "../../services/hooks";
 
 const FiltersChips: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const isLoading = useSelector((store) => store.movies.request);
+
   const keyword = searchParams.get("search") || null;
   const years = searchParams.getAll("year") || null;
   const countries = searchParams.getAll("country") || null;
@@ -39,13 +42,18 @@ const FiltersChips: React.FC = () => {
               label={keyword}
               onDelete={handleDeleteSearch}
               className={styles.keywordChip}
+              disabled={isLoading}
             />
           </li>
         )}
         {years.map((year) => {
           return (
             <li key={uuidv4()} className={styles.filter}>
-              <Chip label={year} onDelete={() => handleFilter("year", year)} />
+              <Chip
+                label={year}
+                onDelete={() => handleFilter("year", year)}
+                disabled={isLoading}
+              />
             </li>
           );
         })}
@@ -56,6 +64,7 @@ const FiltersChips: React.FC = () => {
               <Chip
                 label={filter}
                 onDelete={() => handleFilter("country", filter)}
+                disabled={isLoading}
               />
             </li>
           );
@@ -67,6 +76,7 @@ const FiltersChips: React.FC = () => {
               <Chip
                 label={filter}
                 onDelete={() => handleFilter("genre", filter)}
+                disabled={isLoading}
               />
             </li>
           );
@@ -80,6 +90,7 @@ const FiltersChips: React.FC = () => {
                   AGE_RATINGS.find((item) => item.slug === filter)?.name || ""
                 }
                 onDelete={() => handleFilter("ageRating", filter)}
+                disabled={isLoading}
               />
             </li>
           );

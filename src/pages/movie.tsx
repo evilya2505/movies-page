@@ -30,7 +30,7 @@ const MoviePage: React.FC = () => {
     window.scrollTo(0, 0);
 
     dispatch(getMovieById(movieId));
-  }, [id]);
+  }, [id, dispatch, movieId]);
 
   return (
     <>

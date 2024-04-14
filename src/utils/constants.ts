@@ -1,6 +1,5 @@
 import { InitialValues } from "./types";
 
-// Типы для поиска
 export const filters = [
   {
     value: "name",
@@ -24,10 +23,7 @@ export const REVIEWS_PER_PAGE = 4;
 // Количество изображений на страницу
 export const IMAGES_PER_PAGE = 3;
 
-// Количество изображений на страницу на мобильных устройствах
 export const ONE_ELEMENTS_PER_PAGE = 1;
-
-// Количество изображений на страницу на мобильных устройствах
 export const TWO_ELEMENTS_PER_PAGE = 2;
 
 export const BREAKPOINTS = {

@@ -28,7 +28,8 @@
     "start": "cross-env PORT=7070 REACT_APP_API_TOKEN=$TOKEN react-scripts start",
     "build": "env-cmd -f .env.production react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -50,15 +51,6 @@
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.3.4",
-    "@storybook/addon-essentials": "^8.0.5",
-    "@storybook/addon-interactions": "^8.0.5",
-    "@storybook/addon-links": "^8.0.5",
-    "@storybook/addon-onboarding": "^8.0.5",
-    "@storybook/blocks": "^8.0.5",
-    "@storybook/preset-create-react-app": "^8.0.5",
-    "@storybook/react": "^8.0.5",
-    "@storybook/react-webpack5": "^8.0.5",
-    "@storybook/test": "^8.0.5",
     "@testing-library/react": "^14.2.2",
     "cross-env": "^7.0.3",
     "env-cmd": "^10.1.0",

@@ -24,7 +24,7 @@ export default function Reviews({ movieId }: IReviewsProps) {
 
   useEffect(() => {
     dispatch(getReviews(movieId, page));
-  }, [page]);
+  }, [dispatch, movieId, page]);
 
   return (
     <Box

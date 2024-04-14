@@ -22,3 +22,14 @@ export function ratingColor(
     return "error";
   }
 }
+
+export function formateDate(dateToFormate: string) {
+  const date = new Date(dateToFormate);
+  const formattedDate = date.toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  return formattedDate;
+}

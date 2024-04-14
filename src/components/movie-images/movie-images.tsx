@@ -45,7 +45,7 @@ const MovieImages: React.FC<IMovieImagesProps> = ({
     if (isPhoneScreen) itemsPerPage = ONE_ELEMENTS_PER_PAGE;
 
     dispatch(getImages(movieId, currentPage, itemsPerPage));
-  }, [currentPage, isPhoneScreen, isTabletScreen]);
+  }, [currentPage, dispatch, isPhoneScreen, isTabletScreen, movieId]);
 
   return (
     <Carousel

@@ -15,6 +15,7 @@ function App() {
         <Route path="/movies" element={<MoviesPage />} />
         {/* Роут фильма */}
         <Route path="/movies/:id" element={<MoviePage />} />
+        {/* Перенаправлять на роут фильмов со всех неизвестных */}
         <Route path="*" element={<Navigate to="/movies" replace />} />
       </Routes>
     </main>

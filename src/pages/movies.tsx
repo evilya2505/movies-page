@@ -31,6 +31,7 @@ const MoviesPage: React.FC = () => {
   const moviesPerPage = useSelector((store) => store.movies.moviesPerPage);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const searchWord = searchParams.get("search");
   const currentPage = searchParams.get("page") || "1";
   const years = searchParams.getAll("year") || null;
   const countriesFromParams = searchParams.getAll("country") || null;
@@ -38,13 +39,13 @@ const MoviesPage: React.FC = () => {
   const ageRatingFromParams = searchParams.getAll("ageRating") || null;
 
   useEffect(() => {
-    const searchWord = searchParams.get("search");
     const filters: Filters = {
       year: years,
       country: countriesFromParams || filtersToSearch.countries,
       genre: genresFromParams || filtersToSearch.genres,
       ageRating: ageRatingFromParams || filtersToSearch.ageRating,
     };
+
     if (searchWord !== null) {
       dispatch(searchMovie(searchWord, parseInt(currentPage), moviesPerPage));
     } else {
@@ -54,7 +55,7 @@ const MoviesPage: React.FC = () => {
     dispatch(removeAllCountries());
     dispatch(removeAllGenres());
     dispatch(removeAllAgeRating());
-  }, [searchParams, moviesPerPage]);
+  }, [searchParams, moviesPerPage, dispatch]);
 
   const handlePageChaning = (event: ChangeEvent<unknown>, page: number) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
@@ -69,7 +70,7 @@ const MoviesPage: React.FC = () => {
   useEffect(() => {
     dispatch(getInitialValues("countries.name"));
     dispatch(getInitialValues("genres.name"));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

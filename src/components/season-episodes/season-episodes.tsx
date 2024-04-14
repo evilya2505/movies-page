@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Tooltip, Typography, useMediaQuery } from "@mui/material";
 
 import {
   BREAKPOINTS,
@@ -22,7 +22,6 @@ const SeasonEpisodes: React.FC<ISeasonEpisodesProps> = ({
 }: ISeasonEpisodesProps) => {
   const season = useSelector((store) => store.seasons.season);
   const [currentPage, setCurrentPage] = useState(1);
-
   const isTabletScreen = useMediaQuery(BREAKPOINTS.twoElements);
   const isPhoneScreen = useMediaQuery(BREAKPOINTS.oneElement);
 
@@ -33,7 +32,7 @@ const SeasonEpisodes: React.FC<ISeasonEpisodesProps> = ({
 
   useEffect(() => {
     setStartIndex((currentPage - 1) * elementsPerPage);
-  }, [currentPage]);
+  }, [currentPage, elementsPerPage]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -53,38 +52,44 @@ const SeasonEpisodes: React.FC<ISeasonEpisodesProps> = ({
   }, [season]);
 
   return (
-    <Carousel
-      handleNextPage={handleNextPage}
-      handlePrevPage={handlePrevPage}
-      isDisabledNextButton={
-        currentPage === Math.ceil((episodes.length || 2) / elementsPerPage)
-      }
-      isDisabledPrevButton={currentPage === 1}
-    >
-      {episodes !== null &&
-        episodes
-          .slice(startIndex, startIndex + elementsPerPage)
-          .map((episode: Episode) => (
-            <Box key={episode.number} className={styles.episode}>
-              {!episode.still || episode.still.previewUrl === null ? (
-                <div className={styles.noImage}></div>
-              ) : (
-                <img
-                  className={styles.image}
-                  src={episode?.still?.previewUrl}
-                ></img>
-              )}
-              <Typography>
-                {episode.number}. {episode.name}
-              </Typography>
-              <Typography>
-                {episode?.description?.length > 100
-                  ? `${episode.description.slice(0, 100)} ...`
-                  : episode.description}
-              </Typography>
-            </Box>
-          ))}
-    </Carousel>
+    <>
+      <Carousel
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        isDisabledNextButton={
+          currentPage === Math.ceil((episodes.length || 2) / elementsPerPage)
+        }
+        isDisabledPrevButton={currentPage === 1}
+      >
+        {episodes !== null &&
+          episodes
+            .slice(startIndex, startIndex + elementsPerPage)
+            .map((episode: Episode) => (
+              <Box key={episode.number} className={styles.episode}>
+                {!episode.still || episode.still.previewUrl === null ? (
+                  <div className={styles.noImage}></div>
+                ) : (
+                  <img
+                    className={styles.image}
+                    src={episode?.still?.previewUrl}
+                  ></img>
+                )}
+                <Typography>
+                  {episode.number}. {episode.name}
+                </Typography>
+                {episode?.description?.length > 100 ? (
+                  <Tooltip title={episode?.description}>
+                    <Typography>
+                      {`${episode.description.slice(0, 100)} ...`}
+                    </Typography>
+                  </Tooltip>
+                ) : (
+                  <Typography>{episode.description}</Typography>
+                )}
+              </Box>
+            ))}
+      </Carousel>
+    </>
   );
 };
 

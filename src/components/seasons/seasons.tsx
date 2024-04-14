@@ -28,7 +28,7 @@ const SerialSeasons: React.FC<ISerialSeasonsProps> = ({
 
   useEffect(() => {
     dispatch(getSeason(currentSeason + 1, movieId));
-  }, [currentSeason]);
+  }, [currentSeason, dispatch, movieId]);
 
   return (
     <Box className={styles.seasons}>

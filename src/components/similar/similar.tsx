@@ -33,7 +33,7 @@ const SimilarMovies: React.FC<ISimilarMoviesProps> = ({
 
   useEffect(() => {
     setStartIndex((currentPage - 1) * elementsPerPage);
-  }, [currentPage]);
+  }, [currentPage, elementsPerPage]);
 
   useEffect(() => {
     if (isTabletScreen) setElementsPerPage(TWO_ELEMENTS_PER_PAGE);

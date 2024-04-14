@@ -66,7 +66,15 @@ const SearchForm: React.FC = () => {
       }, SEARCH_DELAY_MS);
       timerIdRef.current = id;
     }
-  }, [dispatch, getFieldState, resetField, keyword, searchType]);
+  }, [
+    dispatch,
+    getFieldState,
+    resetField,
+    keyword,
+    searchType,
+    searchParams,
+    setSearchParams,
+  ]);
 
   return (
     <form className={styles.form} noValidate>
