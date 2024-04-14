@@ -1,0 +1,10 @@
+.reviewsList {
+  max-width: 970px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}

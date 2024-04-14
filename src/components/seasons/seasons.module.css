@@ -1,0 +1,17 @@
+.seasons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.tabs {
+  margin: 20px 0;
+  max-width: 600px;
+}
+
+@media screen and (max-width: 640px) {
+  .tabs {
+    max-width: 300px;
+  }
+}

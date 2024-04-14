@@ -1,0 +1,15 @@
+.image {
+  width: 100%;
+  height: 166px;
+  object-fit: cover;
+}
+
+.noImage {
+  width: 100%;
+  height: 166px;
+  background: #e0e0e0;
+}
+
+.episode {
+  width: 295px;
+}

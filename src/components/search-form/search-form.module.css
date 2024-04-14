@@ -1,0 +1,48 @@
+.form {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fieldset {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: none;
+}
+
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchInput {
+  width: 320px;
+}
+
+.dropdownInput {
+  min-width: 195px;
+}
+
+@media screen and (max-width: 610px) {
+  .searchInputContainer {
+    margin-bottom: 10px;
+  }
+
+  .fieldset {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .searchInput {
+    width: 150px;
+  }
+}

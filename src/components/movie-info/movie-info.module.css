@@ -1,0 +1,31 @@
+.image {
+  width: 320px;
+  height: 450px;
+  object-fit: cover;
+}
+
+.info {
+  margin-top: 20px;
+  column-gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stack {
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 800px) {
+  .info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stack {
+    justify-content: center;
+  }
+}
